@@ -73,6 +73,11 @@ day.
 
 <img src="assets/container_diagram.png" width="900" height="500">
 
+### Component Diagram
+
+<img src="assets/component_diagram.png">
+
+
 ## Database Structure
 ## Test & Evaluation 
 ## Next Steps
