@@ -51,14 +51,28 @@ day.
 - Applications summarises variable aspects of users' trips weekly, monthly, yearly, such as:
  	- percentage of modes of transports
 	- data usage
-	- electrical & oil usage at home or in cars
+	- electrical & fuel usage at home or in cars
 
 ### Third-Party API Support
 
+- Application integrates with APIs from partners, like Octpus Energy for electrical usage, SmartCar for fuel usage.
+
 ### Community Ranking for Good
 
+- Show users' ranking of green trips with their near people or the whole nations.
+
 ## Frontend Design
+
 ## Backend Architecture
+
+### Context Diagram
+
+<img src="assets/context_diagram.png">
+
+### Container Diagram
+
+<img src="assets/container_diagram.png" width="900" height="500">
+
 ## Database Structure
 ## Test & Evaluation 
 ## Next Steps
