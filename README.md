@@ -81,3 +81,14 @@ day.
 ## Database Structure
 ## Test & Evaluation 
 ## Next Steps
+
+## References
+
+- Liang, Xiaoyuan, et al. "A deep learning model for transportation mode detection based on smartphone sensing data." IEEE Transactions on Intelligent Transportation Systems 21.12 (2019): 5223-5235.
+- Xiao, Guangnian, Zhicai Juan, and Chunqin Zhang. "Detecting trip purposes from smartphone-based travel surveys with artificial neural networks and particle swarm optimization." Transportation Research Part C: Emerging Technologies 71 (2016): 447-463.
+- Zhou, Yang, et al. "The smartphone-based person travel survey system: data collection, trip extraction, and travel mode detection." IEEE Transactions on Intelligent Transportation Systems 23.12 (2022): 23399-23407.
+- Prelipcean, Adrian C., Győző Gidófalvi, and Yusak O. Susilo. "MEILI: A travel diary collection, annotation and automation system." Computers, Environment and Urban Systems 70 (2018): 24-34.
+- Zhao, Fang, et al. "Stop detection in smartphone-based travel surveys." Transportation research procedia 11 (2015): 218-226.
+- Hong, Shuyao, et al. "Insights on data quality from a large-scale application of smartphone-based travel survey technology in the Phoenix metropolitan area, Arizona, USA." Transportation Research Part A: Policy and Practice 154 (2021): 413-429.
+- Alho, André, et al. "Online and in-person activity logging using a smartphone-based travel, activity, and time-use survey." Transportation Research Interdisciplinary Perspectives 13 (2022): 100524.
+
