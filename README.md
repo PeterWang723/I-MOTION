@@ -33,10 +33,12 @@ Utilizing this application allows for the optimization of timetables and routes,
 day.
 - Users can choose to see any day of their trails by switching in the calendar.
 
-### Background Sensors' Updating with No Sense
+### Background Sensors' Updating & Predictions with No Sense
 
-- When users don't use this application in the foreground, the application still record telephone's sensors(GPS, accelerometer, heart readers, etc.)
+- When users don't use this application in the foreground, the application still record telephone's sensors(GPS, accelerometer, heart readers, etc.) and frequently predict and improve the model frequently
 
+### Smart Watch Usage & Connectivity
+- Use smart watch to record locations and other data in the way of GPS and other sensors like heart reader and blood oxygen to track healthy info. 
 ### Verification of Predictions
 
 - Although this application will predict users' type of trips like modes of transport, users can still edit these predictions to make them as accurate as possible.
