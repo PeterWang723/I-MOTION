@@ -61,7 +61,7 @@ day.
 
 ### Community Ranking for Good
 
-- Show users' ranking of green trips with their near people or the whole nations.
+- Show users' ranking of green trips with their near people or the whole nations to help them having competitions or self-management, which makes this is not just only a reaserch app. 
 
 ## Frontend Design
 <a href="https://www.figma.com/file/00Vu2B48kec9gSvAqu9Kug/IMOTION-Project?type=design&node-id=402%3A27624&mode=design&t=WScarhWs5W14s5Sn-1">I-MOTION Frontend Design </a>
