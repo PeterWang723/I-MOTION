@@ -71,8 +71,10 @@ day.
 <a href="https://dbdocs.io/w906323199/I-MOTION-database?view=relationships">I-MOTION Database Design </a>
 
 ## Test & Evaluation 
+### User Experience
+### Throughput
+### Latency
 ## Next Steps
-
 ## References
 
 - Liang, Xiaoyuan, et al. "A deep learning model for transportation mode detection based on smartphone sensing data." IEEE Transactions on Intelligent Transportation Systems 21.12 (2019): 5223-5235.
