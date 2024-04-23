@@ -1,5 +1,7 @@
-package com.peter.imotion.dao;
+package com.peter.imotion.dao.raw_data;
 
+
+import com.peter.imotion.dao.general_entity.Users;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -7,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Log {
+public class Health {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -17,7 +19,9 @@ public class Log {
     private Users users;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date time;
+    private Date createdAt;
 
-    private String message;
+    private int heartRate;
+
+    private Double bloodOxygen;
 }

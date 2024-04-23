@@ -1,5 +1,7 @@
-package com.peter.imotion.dao;
+package com.peter.imotion.dao.general_entity;
 
+import com.peter.imotion.dao.raw_data.Health;
+import com.peter.imotion.dao.raw_data.Location;
 import com.peter.imotion.data.Privacy;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,6 +18,12 @@ public class Users {
 
     @OneToMany(mappedBy = "users")
     private List<Log> logs;
+
+    @OneToMany(mappedBy = "users")
+    private List<Location> locations;
+
+    @OneToMany(mappedBy = "users")
+    private List<Health> healths;
 
     private String username;
     private String password;
