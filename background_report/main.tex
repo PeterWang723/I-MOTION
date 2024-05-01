@@ -1,0 +1,124 @@
+\documentclass[12pt,two side]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Definitions for the title page
+% Edit these to provide the correct information
+% e.g. \newcommand{\reportauthor}{Timothy Kimber}
+
+\newcommand{\reporttitle}{Background and Progress Report - I-MOTION}
+\newcommand{\reportauthor}{Haiyi Wang}
+\newcommand{\supervisor}{Aruna}
+\newcommand{\degreetype}{Software Engineering}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% load some definitions and default packages
+\input{includes}
+
+% load some macros
+\input{notation}
+
+\date{June 2024}
+
+\begin{document}
+
+% load title page
+\input{titlepage}
+
+
+% page numbering etc.
+\pagenumbering{roman}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\setcounter{page}{1}
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--- table of contents
+\fancyhead[RE,LO]{\sffamily {Table of Contents}}
+\tableofcontents 
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+\section{Motivation}
+Contemporary urban system research is undergoing a profound change, which is mainly driven by the popularization of mobile technology. The inherent capabilities of mobile devices open up new avenues for data collection, allowing researchers to delve into the complexities of human behavior in urban environments. This paradigm shift highlights the need for innovative approaches to collecting and analyzing data, especially in areas such as travel patterns, time allocation, and integration of digital activities.\newline
+
+The motivation for this report stems from an awareness of the changing research environment and the urgent need to address emerging challenges and opportunities in the field. Traditional methods of data collection, while valuable, often fail to capture the dynamic nature of human behavior in urban environments. Leveraging mobile platforms is a promising solution that provides real-time insights into how individuals navigate physical and digital Spaces, allocate time, and perceive productivity in different contexts.
+\section{Objectives}
+The project outlined in the report aims to address existing gaps in mobile data collection platforms by introducing new capabilities tailored to the specific needs of Imperial's Urban Systems Lab. By developing a new mobile platform-based time use and travel data collection platform, it aims to improve the breadth and depth of data available for interdisciplinary research efforts. This effort is driven by the desire to explore new dimensions of human behavior, from the modes of transportation used to the subtle interplay between physical and digital activities.\newline
+
+In addition, the report aims to advance theoretical understanding and practical applications in the areas of urban planning, transportation, economics and public health. The insights gained from the data collected by the proposed platform have the potential to inform policy decisions, influence the development of urban infrastructure, and help create more livable and sustainable cities.\newline
+
+The specific objectives of the application includes:
+\begin{itemize}
+  \item sensing motion of the device, to support inference of mode of transport
+  \item incorporation of location-based capabilities and map-matching
+  \item monitoring of app usage and data consumption
+  \item Rule-driven user prompt (for data verification and manual inputs)
+  \item Gathering of data from the associated wearable technologies
+\end{itemize}
+Fundamentally, this report is born out of a deep-seated belief in the transformative power of mobile technology to revolutionize the way we study and understand urban systems. By pushing the limits of data collection capabilities and fostering interdisciplinary collaboration, we hope to gain new insights that will drive positive change in the global urban environment.
+\section{Contributions}
+This project develops an application named I-MOTION, a modern cloud-native distributed mobile application that revolutionaries the smartphone-based person travel survey system and extends from a pure research application to a daily healthy tracking application for growing the research population. Although this project focuses on United Kingdom, its features and functionalities can be implemented and changed in any countries in a micro-serviced way.\newline
+
+I-MOTION provides the following features:
+\begin{itemize}
+  \item Real-Time Motion Trail \& Trip Timeline Prediction Demonstration: 
+  
+  I-MOTION can show users' trips and activites in the specific day. Users can choose to see any day of their trails by switching in the calendar.
+  
+  \item Background Sensors' Updating \& Predictions with No Sense:
+
+  When users don't use this application in the foreground, the application still record telephone's sensors(GPS, accelerometer, heart readers, etc.) and frequently predict and improve the model frequently
+  
+  \item Smart Watch Usage \& Connectivity:
+
+  Use smart watch to record locations and other data in the way of GPS and other sensors like heart reader and blood oxygen to track healthy info.
+  
+  \item Verification of Predictions:
+
+  Although this application will predict users' type of trips like modes of transport, users can still edit these predictions to make them as accurate as possible.
+  
+  \item Join Families \& Friends:
+
+  Users can join their families in their activities and trips if families are connected by unique household ID. Users can also add others outside family by typing users' ID.
+
+  \item Statistical Summary of Analysis:
+  
+  Applications summarises variable aspects of users' trips weekly, monthly, yearly, such as: percentage of modes of transports, data usage, and electrical \& fuel usage at home or in cars
+
+  \item Third-Party API Support:
+
+  Application integrates with APIs from partners, like Octopus Energy for electrical usage, SmartCar for fuel usage.
+
+  \item Community Ranking for Good:
+
+    Show users' ranking of green trips with their near people or the whole nations to help them having competitions or self-management, which makes this is not just only a research app.
+  
+  
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Literature Review}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Techinical Achievements}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Project Plan}
+
+
+
+%% bibliography
+\bibliographystyle{apa}
+
+
+\end{document}
