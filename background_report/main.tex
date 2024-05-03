@@ -99,21 +99,50 @@ I-MOTION provides the following features:
 
     Show users' ranking of green trips with their near people or the whole nations to help them having competitions or self-management, which makes this is not just only a research app.
   
-  
 \end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Literature Review}
+\section{Overview of Traditional Survey Methods}
+Historically, traffic data collection has relied primarily on traditional survey methods such as paper diaries and telephone interviews. These methods are fundamental to understanding travel behavior, but are limited by their reliance on participants' memory and honesty. This is particularly pronounced in the elderly population, where cognitive impairment can affect the accuracy of self-reported data. Traditional methods also often suffer from low response rates and heavy participant burdens, which can skew results and limit their applicability in dynamic traffic modeling.
+\section{Introduction of Future Mobility Sensing (FMS)}
+FMS is a platform that collects and visualizes data by using mobile sensing technology, machine learning algorithms, and user verification to accurately record and present detailed travel and activity data. The development of future mobility sensing (FMS) technology marks a major shift in the way traffic data is collected, particularly the convergence of smartphone technology with location-based data collection. FMS utilizes GPS, GSM, Wi-Fi and accelerometers to collect high-resolution objective data on travel patterns and behavior in real time. This technique not only improves the accuracy of the data, but also reduces the recall bias associated with traditional surveys.
+\begin{figure}
+\centering
+\includegraphics[width=9.1cm]{background_report/figures/FMS.png}
+\caption{Future Mobility Sensing (FMS) platform architecture}
+\label{figure:1}
+\end{figure}
+\section{Architecture of FMS}
+The FMS system (Figure \ref{figure:1}) consists of three interrelated parts. It includes a mobile app or tracking device equipped with various sensing technologies to collect data. The backend of the system is a server with a database and custom algorithms to infer the details of the trip, such as the trip site, mode and purpose, thereby reducing the burden on the user. In addition, a user interface accessible through mobile phones and web platforms allows participants to verify their activities. With validation, more information can be gathered and comprehensive data can be displayed. Users can visually see their daily trips and activities on a geo-plotted timeline and can also confirm trips automatically detected by the system.
+\section{Comparative Advantages of FMS}
+FMS offers several distinct advantages over traditional methods, particularly in terms of data quality and participant burden. For example, in the Future Mobility Survey conducted in Singapore, the use of smartphones enabled continuous tracking of travel activity without the need for active user input for each trip. This approach not only minimizes recall errors, but also greatly reduces the workload of participants, potentially increasing response rates and the richness of the collected data.\newline
 
-
+As demonstrated in the Singapore study, the integration of FMS with traditional survey frameworks demonstrates its ability to enhance the data collection process. It provides a powerful platform for tracking detailed travel trails, patterns and duration, which is critical for developing more accurate traffic models and solutions.
+\section{FMS and Elder Populations}
+For the elderly, FMS is particularly beneficial. Due to the blank recall and the fragmented nature of travel patterns, traditional methods often fail to fully reflect the travel challenges faced by older people. FMS's real-time data collection can address these issues, providing more accurate and timely data to better analyze older users' travel needs and obstacles.
+\section{Future Directions and Improvements}
+While FMS has made welcome progress in travel data collection, its implementation is not without challenges. Issues such as digital literacy among the elderly, privacy concerns, and the widespread use of smartphones are all barriers that need to be addressed. Future research could focus on improving user interfaces for seniors, strengthening data privacy protections, and integrating FMS with other data sources to create comprehensive, user-friendly mobile tracking systems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Techinical Achievements}
+\chapter{Technical Preparations}
+\section{Mobile Framework: Swift}
 
+Swift is Apple's proprietary programming language designed for iOS, macOS, watchOS, and tvOS application development. Known for its security features, speed, and modern syntax, it is powerful and easy for developers to use. In mobile development, Swift's performance optimizations and comprehensive error handling enable developers to build fast, reliable applications. In Xcode's integrated development environment, swift development can be hot deployed and updated in real time. In addition, swift has a rich set of frameworks for invoking the underlying functions of Apple devices, including GPS, gyroscopes, accelerometer, data usage detection, and inter-device communication. With these capabilities, swift can provide a complex and efficient user experience for my applications.
+
+\section{Backend Framework: Spring \& FastAPI}
+\section{Database: PostgreSQL \& Redis}
+\section{Machine Learning: Pytorch}
+\section{Distributed microservice Framework: Docker \& Kubernetes}
+\section{Distributed database framework: Amazon RDB}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Project Plan}
+\section{Frontend Design}
+\section{Backend Design}
+\section{Database Design}
+\section{Machine Learning Design}
 
 
 
