@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+            allowedHeaders:
+              - Content-Type
+              - Authorization
+      routes:
+        - id: auth
+          uri: http://localhost:8081
+          predicates:
+            - Path=/userService/**
+          filters:
+            - StripPrefix=1
+
+server:
+  port: 8765
