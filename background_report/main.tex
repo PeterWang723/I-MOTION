@@ -1,7 +1,7 @@
 \documentclass[12pt,two side]{report}
-
+\usepackage[numbers,super,sort&compress]{natbib}
+\bibliographystyle{vancouver}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % Definitions for the title page
 % Edit these to provide the correct information
 % e.g. \newcommand{\reportauthor}{Timothy Kimber}
@@ -105,16 +105,17 @@ I-MOTION provides the following features:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Literature Review}
 \section{Overview of Traditional Survey Methods}
-Historically, traffic data collection has relied primarily on traditional survey methods such as paper diaries and telephone interviews. These methods are fundamental to understanding travel behavior, but are limited by their reliance on participants' memory and honesty. This is particularly pronounced in the elderly population, where cognitive impairment can affect the accuracy of self-reported data. Traditional methods also often suffer from low response rates and heavy participant burdens, which can skew results and limit their applicability in dynamic traffic modeling.
-\section{Introduction of Future Mobility Sensing (FMS)}
+Traditional traffic survey methods, such as paper-based diaries and interviews, computer-assisted telephone interviews (CATI), and GPS-based methods have long been the primary means to understand and analyze traffic travel behavior\cite{alho2022online}\cite{cottrill2013future}\cite{hong2021insights}. However, these methods generally possess inherent limitations and disadvantages. They heavily rely on respondents' memory recall of travel details, often resulting in inaccurate and incomplete data\cite{hong2021insights}. Additionally, the data quality obtained through these methods is unstable due to human memory limitations and subjectivity, making it challenging to support accurate modeling and decision-making processes\cite{cottrill2013future}. Moreover, these traditional approaches often impose significant time and effort burdens on respondents leading to low participation rates and potential data bias\cite{cottrill2013future}. Although GPS loggers can automatically record the location and movements of participants, thereby providing accurate travel data, it is necessary for participants to carry an additional device and ensure its continuous operation throughout the survey period in order to avoid missing any travel information\cite{cottrill2013future}. Moreover, relying solely on GPS data does not directly yield detailed information such as trip purpose and traffic patterns, which often require additional input from participants or inference by algorithms, thus increasing the complexity of data processing \cite{hong2021insights}.
+
+\section{Introduction of Future Mobility Sensing (FMS)\cite{alho2022online}\cite{cottrill2013future}}
 FMS is a platform that collects and visualizes data by using mobile sensing technology, machine learning algorithms, and user verification to accurately record and present detailed travel and activity data. The development of future mobility sensing (FMS) technology marks a major shift in the way traffic data is collected, particularly the convergence of smartphone technology with location-based data collection. FMS utilizes GPS, GSM, Wi-Fi and accelerometers to collect high-resolution objective data on travel patterns and behavior in real time. This technique not only improves the accuracy of the data, but also reduces the recall bias associated with traditional surveys.
 \begin{figure}
 \centering
 \includegraphics[width=9.1cm]{background_report/figures/FMS.png}
-\caption{Future Mobility Sensing (FMS) platform architecture}
+\caption{Future Mobility Sensing (FMS) platform architecture\cite{cottrill2013future}}
 \label{figure:1}
 \end{figure}
-\section{Architecture of FMS}
+\section{Architecture of FMS\cite{cottrill2013future}}
 The FMS system (Figure \ref{figure:1}) consists of three interrelated parts. It includes a mobile app or tracking device equipped with various sensing technologies to collect data. The backend of the system is a server with a database and custom algorithms to infer the details of the trip, such as the trip site, mode and purpose, thereby reducing the burden on the user. In addition, a user interface accessible through mobile phones and web platforms allows participants to verify their activities. With validation, more information can be gathered and comprehensive data can be displayed. Users can visually see their daily trips and activities on a geo-plotted timeline and can also confirm trips automatically detected by the system.
 \section{Comparative Advantages of FMS}
 FMS offers several distinct advantages over traditional methods, particularly in terms of data quality and participant burden. For example, in the Future Mobility Survey conducted in Singapore, the use of smartphones enabled continuous tracking of travel activity without the need for active user input for each trip. This approach not only minimizes recall errors, but also greatly reduces the workload of participants, potentially increasing response rates and the richness of the collected data.\newline
@@ -131,8 +132,20 @@ While FMS has made welcome progress in travel data collection, its implementatio
 
 Swift is Apple's proprietary programming language designed for iOS, macOS, watchOS, and tvOS application development. Known for its security features, speed, and modern syntax, it is powerful and easy for developers to use. In mobile development, Swift's performance optimizations and comprehensive error handling enable developers to build fast, reliable applications. In Xcode's integrated development environment, swift development can be hot deployed and updated in real time. In addition, swift has a rich set of frameworks for invoking the underlying functions of Apple devices, including GPS, gyroscopes, accelerometer, data usage detection, and inter-device communication. With these capabilities, swift can provide a complex and efficient user experience for my applications.
 
-\section{Backend Framework: Java Spring \& Python FastAPI}
+\section{Backend Framework: Java Spring\cite{SpringFramework} \& Python FastAPI}
+The Java Spring Framework and Python FastAPI are two popular back-end frameworks today that are widely used to build high-performance and easily extensible server-side applications.\newline
+
+Java Spring stands out for its versatility and high degree of integration, and it is suitable for the full range of development from simple stand-alone applications to complex enterprise applications. Spring provides developers with a powerful and flexible programming and configuration environment that covers tasks as diverse as dependency injection, aspect oriented programming, and transaction management. Its modular design allows developers to accurately select the required components according to the needs of the project, thereby increasing the efficiency of application development. In addition, Spring has a large developer community that provides rich framework support for a variety of features. Spring's database connectivity capabilities, powerful security configuration capabilities, and extensive ecosystem of cloud-native microservices have made it a great convenience for me as I develop my applications.\newline
+
+Python FastAPI is a modern API framework designed for high-performance application development. It makes clever use of Python's async/await asynchronous features, type annotations, and automated data model validation, which not only greatly reduces the amount of code, but also significantly improves runtime efficiency. Because of its support for asynchronous programming, FastAPI shows excellent performance when dealing with large data volumes or high concurrency scenarios, making it particularly suitable for IO-intensive applications. When I was developing machine learning services, FastAPI was able to handle the huge amount of training and prediction data with ease, which was perfect for my needs.
+
 \section{Database: PostgreSQL \& Redis}
+PostgreSQL and Redis are widely used in their respective areas of industry to build full-featured, efficient, and secure database management systems.\newline
+
+PostgreSQL is a cutting-edge open source object-relational database system recognized for its stability, high performance, and ability to handle complex queries. It supports a wide variety of data types and shows high scalability, enabling users to create personalized functions and data types, and to write server-side code in a variety of programming languages. PostgreSQL adheres to the ACID standard, making it a useful tool for transaction processing systems with strict data integrity requirements. At the same time, it provides excellent concurrency support in environments with frequent read and write operations through multi-version concurrency control (MVCC) technology, thereby improving efficiency. In addition, PostgreSQL is very scalable, so it is ideal for handling large amounts of data in enterprise applications. Since the data that my application needs to store, such as latitude, speed, username, etc., relates only to the underlying data types, and there are associations between these data, a relational database becomes my first choice. At the same time, given the need for security and extensibility, PostgreSQL met my requirements.\newline
+
+Redis is a memory-based unstructured data storage solution that can be used as a database, cache, and message broker. Redis is known for its incredible speed and supports multiple data structures such as strings, lists, collections, and ordered collections, so it can handle a variety of application scenarios from basic caching to complex messaging patterns. The atomicity of its operation provides a reliable performance guarantee for concurrent data processing. While Redis primarily runs in memory to ensure its performance, it is often used for high-speed transactions and real-time applications, making it ideal for scenarios that require fast data access, such as caching, session management, and real-time analytics. In order for my application to respond quickly to user needs, I need to quickly store some hot data that does not need to be persisted, such as session information. Redis features make it ideal for achieving this goal.
+
 \section{Machine Learning: PyTorch}
 PyTorch, an open source machine learning framework developed by Facebook's AI Research Lab, stands out for its dynamic compute graphs, Python interface, GPU acceleration, rich ecosystem of tools and libraries, and active community. Its dynamic computation diagrams allow for flexible model building and runtime modifications, simplifying debugging and facilitating experimentation. PyTorch integrates seamlessly with Python, simplifying development and prototyping, while significantly improving performance through CUDA's GPU acceleration. That makes it suitable for training deep neural networks on large datasets. Its extensive ecosystem and active community provide resources and support for a variety of tasks and applications, which also help me to build my own deep learning model for my application.
 
@@ -149,10 +162,9 @@ Jenkins plays a pivotal role in DevOps systems, orchestrating the symphony of co
 \section{Database Design}
 \section{Machine Learning Design}
 
-
-
 %% bibliography
-\bibliographystyle{apa}
+\bibliography{background_report/references}
+
 
 
 \end{document}
