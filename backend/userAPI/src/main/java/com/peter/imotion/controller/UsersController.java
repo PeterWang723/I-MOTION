@@ -1,10 +1,10 @@
 package com.peter.imotion.controller;
 
+import com.peter.imotion.dao.general_entity.Response;
+import com.peter.imotion.dao.general_entity.ReturnCode;
 import com.peter.imotion.dao.general_entity.Users;
-import com.peter.imotion.repository.UsersRepository;
 import com.peter.imotion.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,24 +14,24 @@ public class UsersController {
     private RegistrationService registrationService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> logIn(@RequestBody Users user, @RequestHeader("Authorization") String token) {
-        return ResponseEntity
-                .ok()
-                .body("null");
+    public Response<String> logIn(@RequestBody Users user, @RequestHeader("Authorization") String token) {
+
+        return new Response<>(ReturnCode.SUCCESS);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Users user) {
+    public Response<String> register(@RequestBody Users user) {
         String result = registrationService.register(user);
-        return ResponseEntity
-                .ok()
-                .body("result");
+        return new Response<>(ReturnCode.SUCCESS);
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout() {
-        return ResponseEntity
-                .ok()
-                .body("null");
+    @PostMapping("/delete")
+    public Response<String> delete() {
+        return new Response<>(ReturnCode.SUCCESS);
+    }
+
+    @PostMapping("/set_privacy")
+    public Response<String> setPrivacy() {
+        return new Response<>(ReturnCode.SUCCESS);
     }
 }
