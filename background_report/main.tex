@@ -150,7 +150,12 @@ Redis is a memory-based unstructured data storage solution that can be used as a
 PyTorch, an open source machine learning framework developed by Facebook's AI Research Lab, stands out for its dynamic compute graphs, Python interface, GPU acceleration, rich ecosystem of tools and libraries, and active community. Its dynamic computation diagrams allow for flexible model building and runtime modifications, simplifying debugging and facilitating experimentation. PyTorch integrates seamlessly with Python, simplifying development and prototyping, while significantly improving performance through CUDA's GPU acceleration. That makes it suitable for training deep neural networks on large datasets. Its extensive ecosystem and active community provide resources and support for a variety of tasks and applications, which also help me to build my own deep learning model for my application.
 
 \section{Distributed microservice Framework: Docker \& Kubernetes}
-\section{Distributed database framework: Amazon RDB}
+Kubernetes, referred to as K8s, is a Google-developed open-source orchestration platform for containers. It facilitates automated deployments, large-scale seamless scalability, and the proficient handling of containerized applications. Its capacity to spawn and oversee multiple containers streamlines operational and maintenance workloads, thanks to its inbuilt load balancing strategies that aid in the management, discovery, and access of application instance clusters. In the realm of microservices, Kubernetes brings forth automated deployments, scalability, and administrative abilities, which adjust the volume of service instances in real-time to accommodate fluctuating loads efficiently, all while maintaining optimal availability and minimizing resource wastage. Additionally, its clever scheduling mechanism ensures optimal resource usage by allocating resources based on the actual needs of each container and service.\newline
+
+Docker is an open-source containerization tool that aids developers in bundling applications and their dependencies into nimble, transferable containers, ready for deployment on any widespread Linux system. Docker boasts several noteworthy features, including a secure container environment, minimal performance impact, virtualization, app isolation, and swift deployment. In a microservices setup, Docker's containerization allows every microservice to operate independently within its own container, ensuring uninterrupted deployments and operations. This self-sufficiency bolsters the portability and responsiveness of microservices, simultaneously elevating the system's fault tolerance and scalability.\newline
+
+When it comes to microservices, both Kubernetes and Docker are indispensable. Docker wraps up microservices in distinct containers, easing their rapid deployment and isolation. Kubernetes, meanwhile, oversees and coordinates these containers, automating deployments, scaling, load distribution, and service identification. The amalgamation of these technologies vastly simplifies the oversight and operation of microservices, boosting developmental and deployment efficiency, and guaranteeing superior durability and flexibility. This symbiotic blend enables microservices frameworks to adapt swiftly to business needs, scaling up or down as required. As a result, deploying an array of services within my server-based applications becomes a breeze, with phased introductions of new services being a straightforward endeavor.
+\section{Database framework: Amazon RDB}
 Amazon RDS, or Amazon Relational Database Service, is an excellent service from Amazon Cloud Technologies that minimizes the complexity and hassle of relational databases. RDS not only provides users with an easy-to-use control panel that helps them quickly create, configure, and manage databases, but also greatly reduces the operational burden of users through automated hardware and software maintenance. RDS supports relational database engines such as MySQL, PostgreSQL, and Oracle, regardless of business requirements. At the same time, its high-performance storage and scalable architecture ensures the efficiency and stability of the database, and the powerful data backup and recovery mechanism ensures the security of the data. RDS's real-time monitoring and alerting system gives users a comprehensive view of the health of the database, and any performance issues or anomalies can be timely feedback and dealt with. For those features, Amazon RDB is a reliable service to store my application's data. 
 \section{DevOps: Jenkins}
 Jenkins plays a pivotal role in DevOps systems, orchestrating the symphony of continuous integration (CI) and continuous delivery (CD). It constantly monitoring changes to the code, and if there is a change, it quickly triggers the build process. This automated monitoring mechanism allows Jenkins to efficiently integrate code changes and significantly reducing integration headaches. Jenkins also moves into automated testing, executing tests with a high degree of accuracy to ensure that code quality is always at a high standard. This automation not only speeds up the feedback loop, but also reduces the risk of errors in the production environment. Jenkins is designed in a coded way to make the process from development, staging and deployment to production smoother and more elegant. At the same time, its deep compatibility with a variety of tools and technologies has further make it important in DevOps workflows. Its strong scalability allows developers to tailor CI/CD processes to their actual needs and adapt flexibly as needs change. The core values of DevOps in Jenkins - automation, collaboration, and continuous improvement, which can help me to build my software in a effective way.
@@ -158,8 +163,52 @@ Jenkins plays a pivotal role in DevOps systems, orchestrating the symphony of co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Project Plan}
 \section{Frontend Design}
-\section{Backend Design}
+\section{System Design}
+\subsection{Mobile Design (Figure \ref{figure:3})}
+The design of the Apple mobile app for mobile devices seamlessly integrates the mobile and watch apps, creating a comprehensive and complementary system. On the mobile side, it leverages the SwiftUI framework, a modern and declarative user interface building tool, to craft an intuitive and user-friendly interface. Simultaneously, by incorporating the MapKit framework, applications can embed detailed map views that not only facilitate location tracking but also offer extensive map functionalities. Moreover, this application utilizes the CoreMotion framework to access device data such as GPS and accelerometer information in order to provide users with precise path tracking and traffic usage prediction.\newline
+
+The design of the watch app also utilizes the SwiftUI framework to ensure visual and interactive consistency with the mobile app, thereby enhancing user experience. The watch app tracks users' health and path information, leveraging the WatchConnectivity framework for seamless data exchange between mobile apps and watch apps. This enables key health information collected on the watch to be seamlessly transferred to the mobile app, providing users with a holistic view of their health management.\newline
+
+The primary objective of this mobile system is to provide users with a seamless cross-device experience, allowing them to easily access and manage key functions on their mobile devices while receiving instant tracking data and notifications through the watch app. This design approach ensures that users have convenient access to relevant information and services regardless of their situation. By incorporating GPS tracking, CoreMotion data collection, and traffic forecasting functions, this application successfully combines health monitoring, path tracking, and traffic analysis capabilities to provide users with in-depth insights. The functional complementarity between these two applications provides users with a comprehensive and convenient experience. Additionally, URLSession is intelligently utilized for server data retrieval while CoreData ensures secure long-term storage within the entire system's data flow.
+
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/mobile-system.png}
+\caption{IMOTION Mobile System}
+\label{figure:3}
+\end{figure}
+
+\subsection{Web Design (Figure \ref{figure:4})}
+The Web client utilizes ReactJS to construct the user interface. ReactJS is a widely adopted front-end JavaScript library that effectively constructs responsive and interactive user interfaces, enabling researchers to manipulate and manage their data with enhanced intuitiveness. By design, the Web client offers two primary methods for handling data: JSPdf-autotable and export-from-json. The JSPdf-autotable method empowers researchers to directly convert data into PDF files, which proves valuable for those who need to generate reports or documents. Through JSPdf-autotable, researchers can personalize the appearance and layout of PDF files, ensuring precise data representation and readability. Conversely, the export-from-json method provides the flexibility to transform data into alternative formats such as XML and CSV files. This functionality is crucial for researchers seeking integration with other systems or conducting in-depth analysis. By selecting export-from-JSON, researchers can effortlessly export data in their desired format for seamless interaction with other tools or platforms. In terms of privacy settings, this Web client allows researchers to adjust the privacy level of their data according to individual requirements. Whether opting for JSPdf-autotable or export-from-json, researchers have the ability to modify privacy settings based on data sensitivity and purpose while guaranteeing utmost security and compliance.
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/web-system.png}
+\caption{IMOTION Web System}
+\label{figure:4}
+\end{figure}
+
+\subsection{Backend Service Design (Figure \ref{figure:5})}
+The IMOTION backend service adopts a microservice architecture that boasts robust security, high availability, and scalability. Kubernetes automates the deployment and management of microservice applications, facilitating internal and external communication between services and users by exposing service ports. The Redis database is utilized for hotpot data caching. The Spring API Gateway serves as a reverse proxy, ensuring security measures and load balancing capabilities, while the PostgreSQL database cluster provides persistent data storage. Additionally, the design encompasses five key API microservices: User API handles user Data invocation; Data Collection API manages user-related data collection and invocation; Statistics and Survey API facilitates data processing and analysis; AI model contributes intelligence to the service; Researcher API enables researcher-related operations invocation. Google Apple Map Server supplies maps for the service. All communication takes place over HTTP to guarantee secure data transmission. This backend service is meticulously designed to meet modern Internet application requirements while delivering stable, efficient, and intelligent support.
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/backend-service-system.png}
+\caption{IMOTION Backend Service System}
+\label{figure:5}
+\end{figure}
 \section{Database Design}
+\begin{itemize}
+    \item General Entity, which contains information about application's users and what privacy level users want to participant. The interaction log describes how users interact with system.
+    \item Raw Data, which stores raw data in the trip level. There are two Entities:"Purpose" entity are responsible for listing the form of 
+    \item Activity
+    \item Researcher
+    \item Hot Values
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/database.png}
+\caption{IMOTION Database Design}
+\label{figure:6}
+\end{figure}
 \section{Machine Learning Design}
 
 %% bibliography
