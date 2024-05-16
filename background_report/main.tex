@@ -128,36 +128,36 @@ While FMS has made welcome progress in travel data collection, its implementatio
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Technical Preparations}
-\section{Mobile Framework: Swift}
+\section{Mobile Framework: Swift\cite{swift}}
 
 Swift is Apple's proprietary programming language designed for iOS, macOS, watchOS, and tvOS application development. Known for its security features, speed, and modern syntax, it is powerful and easy for developers to use. In mobile development, Swift's performance optimizations and comprehensive error handling enable developers to build fast, reliable applications. In Xcode's integrated development environment, swift development can be hot deployed and updated in real time. In addition, swift has a rich set of frameworks for invoking the underlying functions of Apple devices, including GPS, gyroscopes, accelerometer, data usage detection, and inter-device communication. With these capabilities, swift can provide a complex and efficient user experience for my applications.
 
-\section{Backend Framework: Java Spring\cite{SpringFramework} \& Python FastAPI}
+\section{Backend Framework: Java Spring\cite{SpringFramework} \& Python FastAPI\cite{fastapi_website}}
 The Java Spring Framework and Python FastAPI are two popular back-end frameworks today that are widely used to build high-performance and easily extensible server-side applications.\newline
 
 Java Spring stands out for its versatility and high degree of integration, and it is suitable for the full range of development from simple stand-alone applications to complex enterprise applications. Spring provides developers with a powerful and flexible programming and configuration environment that covers tasks as diverse as dependency injection, aspect oriented programming, and transaction management. Its modular design allows developers to accurately select the required components according to the needs of the project, thereby increasing the efficiency of application development. In addition, Spring has a large developer community that provides rich framework support for a variety of features. Spring's database connectivity capabilities, powerful security configuration capabilities, and extensive ecosystem of cloud-native microservices have made it a great convenience for me as I develop my applications.\newline
 
 Python FastAPI is a modern API framework designed for high-performance application development. It makes clever use of Python's async/await asynchronous features, type annotations, and automated data model validation, which not only greatly reduces the amount of code, but also significantly improves runtime efficiency. Because of its support for asynchronous programming, FastAPI shows excellent performance when dealing with large data volumes or high concurrency scenarios, making it particularly suitable for IO-intensive applications. When I was developing machine learning services, FastAPI was able to handle the huge amount of training and prediction data with ease, which was perfect for my needs.
 
-\section{Database: PostgreSQL \& Redis}
+\section{Database: PostgreSQL\cite{postgresql} \& Redis\cite{redis}}
 PostgreSQL and Redis are widely used in their respective areas of industry to build full-featured, efficient, and secure database management systems.\newline
 
 PostgreSQL is a cutting-edge open source object-relational database system recognized for its stability, high performance, and ability to handle complex queries. It supports a wide variety of data types and shows high scalability, enabling users to create personalized functions and data types, and to write server-side code in a variety of programming languages. PostgreSQL adheres to the ACID standard, making it a useful tool for transaction processing systems with strict data integrity requirements. At the same time, it provides excellent concurrency support in environments with frequent read and write operations through multi-version concurrency control (MVCC) technology, thereby improving efficiency. In addition, PostgreSQL is very scalable, so it is ideal for handling large amounts of data in enterprise applications. Since the data that my application needs to store, such as latitude, speed, username, etc., relates only to the underlying data types, and there are associations between these data, a relational database becomes my first choice. At the same time, given the need for security and extensibility, PostgreSQL met my requirements.\newline
 
 Redis is a memory-based unstructured data storage solution that can be used as a database, cache, and message broker. Redis is known for its incredible speed and supports multiple data structures such as strings, lists, collections, and ordered collections, so it can handle a variety of application scenarios from basic caching to complex messaging patterns. The atomicity of its operation provides a reliable performance guarantee for concurrent data processing. While Redis primarily runs in memory to ensure its performance, it is often used for high-speed transactions and real-time applications, making it ideal for scenarios that require fast data access, such as caching, session management, and real-time analytics. In order for my application to respond quickly to user needs, I need to quickly store some hot data that does not need to be persisted, such as session information. Redis features make it ideal for achieving this goal.
 
-\section{Machine Learning: PyTorch}
+\section{Machine Learning: PyTorch\cite{pytorch}}
 PyTorch, an open source machine learning framework developed by Facebook's AI Research Lab, stands out for its dynamic compute graphs, Python interface, GPU acceleration, rich ecosystem of tools and libraries, and active community. Its dynamic computation diagrams allow for flexible model building and runtime modifications, simplifying debugging and facilitating experimentation. PyTorch integrates seamlessly with Python, simplifying development and prototyping, while significantly improving performance through CUDA's GPU acceleration. That makes it suitable for training deep neural networks on large datasets. Its extensive ecosystem and active community provide resources and support for a variety of tasks and applications, which also help me to build my own deep learning model for my application.
 
-\section{Distributed microservice Framework: Docker \& Kubernetes}
+\section{Distributed microservice Framework: Docker\cite{docker_website}\& Kubernetes\cite{kubernetes_website}}
 Kubernetes, referred to as K8s, is a Google-developed open-source orchestration platform for containers. It facilitates automated deployments, large-scale seamless scalability, and the proficient handling of containerized applications. Its capacity to spawn and oversee multiple containers streamlines operational and maintenance workloads, thanks to its inbuilt load balancing strategies that aid in the management, discovery, and access of application instance clusters. In the realm of microservices, Kubernetes brings forth automated deployments, scalability, and administrative abilities, which adjust the volume of service instances in real-time to accommodate fluctuating loads efficiently, all while maintaining optimal availability and minimizing resource wastage. Additionally, its clever scheduling mechanism ensures optimal resource usage by allocating resources based on the actual needs of each container and service.\newline
 
 Docker is an open-source containerization tool that aids developers in bundling applications and their dependencies into nimble, transferable containers, ready for deployment on any widespread Linux system. Docker boasts several noteworthy features, including a secure container environment, minimal performance impact, virtualization, app isolation, and swift deployment. In a microservices setup, Docker's containerization allows every microservice to operate independently within its own container, ensuring uninterrupted deployments and operations. This self-sufficiency bolsters the portability and responsiveness of microservices, simultaneously elevating the system's fault tolerance and scalability.\newline
 
 When it comes to microservices, both Kubernetes and Docker are indispensable. Docker wraps up microservices in distinct containers, easing their rapid deployment and isolation. Kubernetes, meanwhile, oversees and coordinates these containers, automating deployments, scaling, load distribution, and service identification. The amalgamation of these technologies vastly simplifies the oversight and operation of microservices, boosting developmental and deployment efficiency, and guaranteeing superior durability and flexibility. This symbiotic blend enables microservices frameworks to adapt swiftly to business needs, scaling up or down as required. As a result, deploying an array of services within my server-based applications becomes a breeze, with phased introductions of new services being a straightforward endeavor.
-\section{Database framework: Amazon RDB}
+\section{Database framework: Amazon RDB\cite{awsrds}}
 Amazon RDS, or Amazon Relational Database Service, is an excellent service from Amazon Cloud Technologies that minimizes the complexity and hassle of relational databases. RDS not only provides users with an easy-to-use control panel that helps them quickly create, configure, and manage databases, but also greatly reduces the operational burden of users through automated hardware and software maintenance. RDS supports relational database engines such as MySQL, PostgreSQL, and Oracle, regardless of business requirements. At the same time, its high-performance storage and scalable architecture ensures the efficiency and stability of the database, and the powerful data backup and recovery mechanism ensures the security of the data. RDS's real-time monitoring and alerting system gives users a comprehensive view of the health of the database, and any performance issues or anomalies can be timely feedback and dealt with. For those features, Amazon RDB is a reliable service to store my application's data. 
-\section{DevOps: Jenkins}
+\section{DevOps: Jenkins\cite{jenkins}}
 Jenkins plays a pivotal role in DevOps systems, orchestrating the symphony of continuous integration (CI) and continuous delivery (CD). It constantly monitoring changes to the code, and if there is a change, it quickly triggers the build process. This automated monitoring mechanism allows Jenkins to efficiently integrate code changes and significantly reducing integration headaches. Jenkins also moves into automated testing, executing tests with a high degree of accuracy to ensure that code quality is always at a high standard. This automation not only speeds up the feedback loop, but also reduces the risk of errors in the production environment. Jenkins is designed in a coded way to make the process from development, staging and deployment to production smoother and more elegant. At the same time, its deep compatibility with a variety of tools and technologies has further make it important in DevOps workflows. Its strong scalability allows developers to tailor CI/CD processes to their actual needs and adapt flexibly as needs change. The core values of DevOps in Jenkins - automation, collaboration, and continuous improvement, which can help me to build my software in a effective way.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,10 +198,10 @@ The IMOTION backend service adopts a microservice architecture that boasts robus
 \section{Database Design}
 \begin{itemize}
     \item General Entity, which contains information about application's users and what privacy level users want to participant. The interaction log describes how users interact with system.
-    \item Raw Data, which stores raw data in the trip level. There are two Entities:"Purpose" entity are responsible for listing the form of 
-    \item Activity
-    \item Researcher
-    \item Hot Values
+    \item Raw Data is responsible for retrieving information from mobile devices or third-party APIs, including GPS data, acceleration measurements, health-related information, and energy usage in vehicles or homes. The acceleration data is utilized to predict the transportation modes used by the user during a trip.
+    \item Activity Entity is responsible for storing a table containing information about the purpose of the activity or trip, where users can select their perceived purpose of the trip. There are two types of Trip entities: inference trips and ground-truth trips. Inference trips store user path segmentation predicted by machine learning models from raw data and predict the utilized traffic facilities. Ground-truth trips are modified by users based on their own memories to improve the model's accuracy.
+    \item Researcher Entity stores researchers' information, with exclusive access granted to authorized researchers through the web-based management system. The privacy level is determined and stored by each researcher, allowing users to make personalized choices.
+    \item The JWT-Session-Key Entity utilizes Redis to store critical data, such as authentication information and frequently accessed data.
 \end{itemize}
 \begin{figure}
 \centering
@@ -209,8 +209,39 @@ The IMOTION backend service adopts a microservice architecture that boasts robus
 \caption{IMOTION Database Design}
 \label{figure:6}
 \end{figure}
-\section{Machine Learning Design}
+\section{Machine Learning Design\cite{liang2019deep}}
+For this application, I have implemented the machine learning model proposed by (Liang 2019). The model efficiently and accurately identifies various transportation modes solely based on accelerometer data from mobile phones. These recognized modes include stationary, walking, cycling, bus, car, subway, and train. In the experimental verification conducted in the paper, this model achieved an impressive accuracy of 94.48\%, surpassing traditional machine learning techniques. Notably, due to its reliance only on accelerometer data, it exhibits minimal resource consumption on the phone system.
 
+\subsection{Data Processing}
+\begin{enumerate}
+    \item Data collection: This application determines the sampling frequency of the accelerometer based on user-defined privacy levels with a default setting of 50 samples per second.
+    \item Gravity Subtraction: Considering Earth's gravity as a universal influence affecting all objects uniformly; we eliminate its impact using a low-pass filter since it is irrelevant for traffic pattern recognition.
+    \item Data Smoothing: We employ the central moving average algorithm to process acceleration data effectively and reduce fluctuations caused by unexpected movements of mobile phones.
+    \item Data Window Sliding: To enhance adaptability to changes in phone position and orientation, we utilize acceleration magnitude instead of specific axis data. Additionally, we segment time series data into fixed-size windows to meet real-time detection requirements.
+\end{enumerate}
+
+\subsection{Model Construction}
+The paper presents a specialized convolutional neural network (CNN) (Figure \ref{figure:7} and \ref{figure:8}) for processing one-dimensional acceleration data, aiming to accurately identify users' transportation modes in different time periods.
+\begin{enumerate}
+    \item Input layer: The network receives a one-dimensional acceleration data vector with a scale of 512×1 per time window.
+    \item Convolutional layers: Multiple convolution kernels are utilized to extract features from the input data. The first convolution layer consists of 32 convolution kernels sized at 15×1, and the convolution operation is performed with a step size of 1. Subsequently, the data undergoes dimensionality reduction through the Max pooling layer.
+    \item Fully connected layer: After multiple convolution and pooling operations, the data is reduced to 8×64 and then fed into a fully connected layer that further compresses its dimensions to 200×1.
+    \item Output layer: Finally, the transformed data becomes a 7×1 output vector representing probabilities associated with various transportation modes.
+    \item Network features: This network employs convolution and pooling operations for feature extraction in acceleration data while utilizing the fully connected layer for classification purposes, enabling accurate detection of users' transportation modes. To enhance model convergence speed, Leaky ReLU is adopted as an activation function along with Adam optimization algorithm and L2 regularization techniques to prevent overfitting.
+\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/model.png}
+\caption{IMOTION Model Design}
+\label{figure:7}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=12cm]{background_report/figures/hidden layer.png}
+\caption{Hidden Layer Details}
+\label{figure:8}
+\end{figure}
 %% bibliography
 \bibliography{background_report/references}
 
