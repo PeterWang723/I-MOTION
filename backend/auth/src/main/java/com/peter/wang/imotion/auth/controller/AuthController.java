@@ -3,15 +3,15 @@ package com.peter.wang.imotion.auth.controller;
 import com.peter.wang.imotion.auth.model.LoginEntity;
 import com.peter.wang.imotion.auth.model.Response;
 import com.peter.wang.imotion.auth.model.ReturnCode;
+import com.peter.wang.imotion.auth.service.EmailService;
 import com.peter.wang.imotion.auth.utils.JWTUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @RestController
 @RequestMapping(path = "/auth/v1/")
@@ -20,6 +20,9 @@ public class AuthController {
 
     @Autowired
     JWTUtils jwtUtils;
+
+    @Autowired
+    EmailService emailService;
 
     @PostMapping("/login")
     public Response<String> login(@Valid @RequestBody LoginEntity user) {
@@ -35,51 +38,46 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public Response<> login(HttpServletRequest request, @Valid @RequestBody LoginEntity loginDto) {
+    public Response<String> register(HttpServletRequest request, @Valid @RequestBody LoginEntity loginDto) {
 
-        String ip = IpAddressUtils.getIpAddr(request);
-        // 获取用户信息、比对密码
-        Result<UserDTO> result = loginFeignApi.login(loginDto,ip);
-        if(ResultCode.SUCCESS.getCode()!=result.getCode()){
-            log.error(result.getMsg());
-            return result;
+        Response<String> response = new Response<>(ReturnCode.SUCCESS);
+        if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
+            log.error(response.getMessage());
+            return response;
         }
-        UserDTO user = result.getData();
-        String token = JWTUtils.createJwt(user.getId() + "");
-        data.put("token",token);
-        return new Response<>()
+        Random rand = new Random();
+        StringBuilder verificationCode = new StringBuilder();
+
+        for (int i = 0; i < 10; i++) {
+            int digit = rand.nextInt(10);
+            verificationCode.append(digit);
+        }
+
+        String subject = "IMOTION Email Verification";
+        String text = "This is your verification code: " + verificationCode;
+
+        emailService.sendEmail(loginDto.getUsername(), subject, text);
+
+        return new Response<>(ReturnCode.SUCCESS);
     }
 
-    @PostMapping("/logout")
-    public Response<> login(HttpServletRequest request, @Valid @RequestBody LoginEntity loginDto) {
-
-        String ip = IpAddressUtils.getIpAddr(request);
-        // 获取用户信息、比对密码
-        Result<UserDTO> result = loginFeignApi.login(loginDto,ip);
-        if(ResultCode.SUCCESS.getCode()!=result.getCode()){
-            log.error(result.getMsg());
-            return result;
-        }
-        UserDTO user = result.getData();
-        String token = JWTUtils.createJwt(user.getId() + "");
-        data.put("token",token);
-        return new Response<>()
+    @GetMapping("/verify")
+    public String verifyEmail(@RequestParam String code) {
+        // 根据验证代码处理验证逻辑，例如更新用户的验证状态
+        boolean isVerified = verifyUserEmail(code);
+        return isVerified ? "Email verified successfully!" : "Invalid verification code!";
     }
 
     @PostMapping("/delete")
-    public Response<> login(HttpServletRequest request, @Valid @RequestBody LoginEntity loginDto) {
+    public Response<String> delete(HttpServletRequest request, @Valid @RequestBody LoginEntity user) {
 
-        String ip = IpAddressUtils.getIpAddr(request);
-        // 获取用户信息、比对密码
-        Result<UserDTO> result = loginFeignApi.login(loginDto,ip);
-        if(ResultCode.SUCCESS.getCode()!=result.getCode()){
-            log.error(result.getMsg());
-            return result;
+        Response<String> response = new Response<>(ReturnCode.SUCCESS);
+        if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
+            log.error(response.getMessage());
+            return response;
         }
-        UserDTO user = result.getData();
-        String token = JWTUtils.createJwt(user.getId() + "");
-        data.put("token",token);
-        return new Response<>()
+        String token = jwtUtils.createJwt(user.getUsername());
+        return new Response<>(ReturnCode.SUCCESS, token);
     }
 
 }
