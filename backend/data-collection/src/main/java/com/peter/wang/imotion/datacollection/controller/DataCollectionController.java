@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/dc/v1/")
 @Slf4j
@@ -28,32 +30,32 @@ public class DataCollectionController {
     HealthRepository healthRepository;
 
     @PostMapping("/save_loc")
-    public Response<String> saveLocation(@Valid @RequestBody Location location){
-        locationRepository.save(location);
+    public Response<String> saveLocation(@Valid @RequestBody List<Location> locations){
+        locationRepository.saveAll(locations);
         return new Response<>(ReturnCode.SUCCESS);
     }
 
     @PostMapping("/save_acc")
-    public Response<String> saveAcc(@Valid @RequestBody Acceleratometer acceleratometer){
-        acceleratometerRepository.save(acceleratometer);
+    public Response<String> saveAcc(@Valid @RequestBody List<Acceleratometer> acceleratometers){
+        acceleratometerRepository.saveAll(acceleratometers);
         return new Response<>(ReturnCode.SUCCESS);
     }
 
     @PostMapping("/save_data")
-    public Response<String> saveData(@Valid @RequestBody DataUsage dataUsage){
-        dataUsageRepository.save(dataUsage);
+    public Response<String> saveData(@Valid @RequestBody List<DataUsage> dataUsages){
+        dataUsageRepository.saveAll(dataUsages);
         return new Response<>(ReturnCode.SUCCESS);
     }
 
     @PostMapping("/save_energy")
-    public Response<String> saveEnergy(@Valid @RequestBody CarEnergyUsage carEnergyUsage){
-        carEnergyRepository.save(carEnergyUsage);
+    public Response<String> saveEnergy(@Valid @RequestBody List<CarEnergyUsage> carEnergyUsages){
+        carEnergyRepository.saveAll(carEnergyUsages);
         return new Response<>(ReturnCode.SUCCESS);
     }
 
     @PostMapping("/save_health")
-    public Response<String> saveHealth(@Valid @RequestBody Health health){
-        healthRepository.save(health);
+    public Response<String> saveHealth(@Valid @RequestBody List<Health> healths){
+        healthRepository.saveAll(healths);
         return new Response<>(ReturnCode.SUCCESS);
     }
 }
