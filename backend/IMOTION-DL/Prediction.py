@@ -9,13 +9,16 @@ def predict_user_data(user_id, features, times):
     end_interval = None
 
     # Process each 10-second window
-    for start in range(0, len(features) - 599, 60):  # Jump by 60 rows each iteration
+    for start in range(0, len(features) - 599, 100):  # Jump by 100 rows each iteration
         end = start + 600
-        pred_end = start + 60
+        pred_end = start + 100
         if end > len(features):
             break
         window_features = features[start:end]
-        window_times = times[start:pred_end]
+        if end == len(features) - 1:
+            window_times = times[start:end]
+        else:
+            window_times = times[start:pred_end]
 
         # Convert features to tensor and predict
         window_features_tensor = torch.tensor(window_features, dtype=torch.float32)

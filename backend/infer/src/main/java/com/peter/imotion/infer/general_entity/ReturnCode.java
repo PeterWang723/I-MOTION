@@ -1,4 +1,4 @@
-package com.peter.imotion.dao.general_entity;
+package com.peter.imotion.infer.general_entity;
 
 import lombok.Getter;
 
@@ -11,9 +11,7 @@ public enum ReturnCode {
     AUTH_FALSE(106, "验证码错误"),
     EMPTY_STRING(109, "空字符串"),
     INVALID_TYPE(112, "类型错误"),
-    INVALID_ADMIN_INFO(301, "管理员登录信息错误"),
-    USER_ALREADY_EXISTS(103, "用户已存在"),
-    INVALID_USER_LOGIN(102, "用户用户名或密码错误");
+    INVALID_ADMIN_INFO(301, "管理员登录信息错误");
 
 
     private final Integer code;

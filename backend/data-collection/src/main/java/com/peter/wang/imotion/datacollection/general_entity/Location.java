@@ -9,9 +9,9 @@ import java.util.Date;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long uid;
-    private Date time;
-    private double latitude;
-    private boolean longitude;
+    private Long id;
+    private Long uid;
+    private Date created_time;
+    private Double latitude;
+    private Double longitude;
 }

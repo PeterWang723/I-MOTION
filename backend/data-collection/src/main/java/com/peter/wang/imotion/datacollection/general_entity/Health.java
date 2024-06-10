@@ -13,9 +13,9 @@ import java.util.Date;
 public class Health {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long uid;
-    private Date time;
-    private int heartBeat;
-    private double bloodOxygen;
+    private Long id;
+    private Long uid;
+    private Date created_time;
+    private Integer heartBeat;
+    private Double bloodOxygen;
 }

@@ -4,8 +4,6 @@ import com.peter.imotion.data.Privacy;
 import com.peter.imotion.data.Role;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collection;
 import java.util.List;

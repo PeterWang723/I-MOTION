@@ -13,10 +13,10 @@ import java.util.Date;
 public class Acceleratometer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long uid;
+    private Long id;
+    private Long uid;
     private Date time;
-    private double x;
-    private double y;
-    private double z;
+    private Double x;
+    private Double y;
+    private Double z;
 }

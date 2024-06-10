@@ -13,9 +13,9 @@ import java.util.Date;
 public class DataUsage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long uid;
-    private Date from;
-    private Date to;
-    private long data;
+    private Long id;
+    private Long uid;
+    private Date from_time;
+    private Date to_time;
+    private Long data;
 }

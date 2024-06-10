@@ -1,9 +1,12 @@
 package com.peter.wang.imotion.auth.controller;
 
+import com.peter.wang.imotion.auth.data.Privacy;
+import com.peter.wang.imotion.auth.data.Role;
 import com.peter.wang.imotion.auth.feign.UserClient;
 import com.peter.wang.imotion.auth.model.LoginEntity;
 import com.peter.wang.imotion.auth.model.Response;
 import com.peter.wang.imotion.auth.model.ReturnCode;
+import com.peter.wang.imotion.auth.model.Users;
 import com.peter.wang.imotion.auth.service.EmailService;
 import com.peter.wang.imotion.auth.utils.EmailUtils;
 import com.peter.wang.imotion.auth.utils.JWTUtils;
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Random;
 
 @RestController
-@RequestMapping(path = "/auth/v1/")
+@RequestMapping(path = "/auth")
 @Slf4j
 public class AuthController {
 
@@ -30,29 +33,30 @@ public class AuthController {
     @Autowired
     UserClient userClient;
 
-    @GetMapping("/test")
-    public String test(@RequestParam String code) {
-        log.info("Auth got a code");
-        return "You got a" + code;
-    }
-
     @PostMapping("/login")
-    public Response<String> login(@Valid @RequestBody LoginEntity user) {
+    public Response<String> login(@RequestBody LoginEntity user) {
 
         // 获取用户信息、比对密码, 用 feign
-        Response<String> response = userClient.getUser(user.getUsername(), user.getPassword());
+        Response<String> response = userClient.getUser(user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
             log.error(response.getMessage());
             return response;
         }
-        String token = jwtUtils.createJwt(user.getUsername());
+        String token = jwtUtils.createJwt(response.getData());
         return new Response<>(ReturnCode.SUCCESS, token);
     }
 
     @PostMapping("/register")
-    public Response<String> register(HttpServletRequest request, @Valid @RequestBody LoginEntity loginDto) {
-
-        Response<String> response = new Response<>(ReturnCode.SUCCESS);
+    public Response<String> register(@Valid @RequestBody LoginEntity user) {
+        Users r_user = new Users();
+        r_user.setUsername(user.getUsername());
+        r_user.setPassword(user.getPassword());
+        r_user.setRole(Role.USER);
+        r_user.setPrivacyLevel(Privacy.LOW);
+        r_user.setExpired(false);
+        r_user.setHouseHold("No");
+        r_user.setBlocked(false);
+        Response<String> response = userClient.registerUser(r_user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
             log.error(response.getMessage());
             return response;

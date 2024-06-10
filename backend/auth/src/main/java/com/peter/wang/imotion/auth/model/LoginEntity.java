@@ -1,5 +1,6 @@
 package com.peter.wang.imotion.auth.model;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class LoginEntity {
+    @Email
     private String username;
     private String password;
 }

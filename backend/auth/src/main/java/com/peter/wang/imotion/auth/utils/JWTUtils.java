@@ -16,7 +16,7 @@ public class JWTUtils {
 
     private static final String SECRET_KEY = "secretKey:123456";
 
-    public static final long TOKEN_EXPIRE_TIME = 7200 * 1000;
+    public static final long TOKEN_EXPIRE_TIME = 7200 * 10000;
 
     public String createJwt(String userId){
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);

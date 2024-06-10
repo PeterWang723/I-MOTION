@@ -1,12 +1,17 @@
 package com.peter.wang.imotion.auth.feign;
 
+import com.peter.wang.imotion.auth.model.LoginEntity;
 import com.peter.wang.imotion.auth.model.Response;
+import com.peter.wang.imotion.auth.model.Users;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "user-api", url="http://localhost:8080")
+@FeignClient(name = "user-api", url="http://localhost:8081/user")
 public interface UserClient {
-    @GetMapping("/login")
-    Response<String> getUser(@RequestParam("email") String email, @RequestParam("password") String password);
+    @PostMapping("/login")
+    Response<String> getUser(@RequestBody LoginEntity user);
+
+    @PostMapping("/register")
+    Response<String> registerUser(@RequestBody Users user);
 }
