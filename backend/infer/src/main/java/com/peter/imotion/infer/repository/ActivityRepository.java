@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
             "a.luggage_num = :luggage_num, a.luggage_type = :luggage_type, a.luggage_weight = :luggage_weight, " +
             "a.travel_car_cost = :travel_car_cost " +
             "WHERE a.id = :id AND a.u_id = :u_id")
-    int updateActivityByIdAndUId(long id, long u_id, String mode, Date day, Date start_time, Date end_time,
+    void updateActivityByIdAndUId(long id, long u_id, String mode, Date day, Date start_time, Date end_time,
                                  String origin, String destination, String activities, Integer cost,
                                  Integer luggage_num, Integer luggage_type, Integer luggage_weight,
                                  Integer travel_car_cost);

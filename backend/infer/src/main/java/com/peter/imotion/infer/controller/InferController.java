@@ -1,9 +1,11 @@
 package com.peter.imotion.infer.controller;
 
 import com.peter.imotion.infer.general_entity.Activity;
+import com.peter.imotion.infer.general_entity.Purpose;
 import com.peter.imotion.infer.general_entity.Response;
 import com.peter.imotion.infer.general_entity.ReturnCode;
 import com.peter.imotion.infer.repository.ActivityRepository;
+import com.peter.imotion.infer.repository.PurposeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ import java.util.List;
 public class InferController {
     @Autowired
     private ActivityRepository activityRepository;
+
+    @Autowired
+    private PurposeRepository purposeRepository;
 
     @GetMapping("/get_infer/{user_id}/{date}")
     public Response<List<Activity>> get_infer(@PathVariable Long user_id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
@@ -34,5 +39,11 @@ public class InferController {
                     activity.getTravel_car_cost());
         }
         return new Response<>(ReturnCode.SUCCESS);
+    }
+
+    @PostMapping("/add_purpose")
+    public Response<String> add_purpose(@RequestBody List<Purpose> purposes) {
+            purposeRepository.saveAll(purposes);
+            return new Response<>(ReturnCode.SUCCESS);
     }
 }

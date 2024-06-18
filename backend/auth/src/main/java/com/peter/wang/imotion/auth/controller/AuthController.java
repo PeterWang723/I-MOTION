@@ -36,7 +36,6 @@ public class AuthController {
     @PostMapping("/login")
     public Response<String> login(@RequestBody LoginEntity user) {
 
-        // 获取用户信息、比对密码, 用 feign
         Response<String> response = userClient.getUser(user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
             log.error(response.getMessage());
@@ -52,9 +51,8 @@ public class AuthController {
         r_user.setUsername(user.getUsername());
         r_user.setPassword(user.getPassword());
         r_user.setRole(Role.USER);
-        r_user.setPrivacyLevel(Privacy.LOW);
+        r_user.setPrivacyLevel(user.getPrivacy());
         r_user.setExpired(false);
-        r_user.setHouseHold("No");
         r_user.setBlocked(false);
         Response<String> response = userClient.registerUser(r_user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
@@ -85,15 +83,15 @@ public class AuthController {
     }
 
     @PostMapping("/delete")
-    public Response<String> delete(HttpServletRequest request, @Valid @RequestBody LoginEntity user) {
-
-        Response<String> response = new Response<>(ReturnCode.SUCCESS);
+    public Response<String> delete(@RequestHeader Long username) {
+        Users r_user = new Users();
+        r_user.setId(username);
+        Response<String> response = userClient.deleteUser(r_user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
             log.error(response.getMessage());
             return response;
         }
-        String token = jwtUtils.createJwt(user.getUsername());
-        return new Response<>(ReturnCode.SUCCESS, token);
+        return new Response<>(ReturnCode.SUCCESS);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.peter.imotion.dao.general_entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.peter.imotion.data.Privacy;
 import com.peter.imotion.data.Role;
 import jakarta.persistence.*;
