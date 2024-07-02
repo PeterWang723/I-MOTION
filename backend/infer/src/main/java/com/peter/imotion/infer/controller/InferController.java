@@ -15,35 +15,43 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/infer/v1/")
+@RequestMapping(path = "/infer")
 public class InferController {
     @Autowired
     private ActivityRepository activityRepository;
 
-    @Autowired
-    private PurposeRepository purposeRepository;
 
-    @GetMapping("/get_infer/{user_id}/{date}")
-    public Response<List<Activity>> get_infer(@PathVariable Long user_id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
-        List<Activity> activities = activityRepository.findByUserIdAndDate(user_id, date);
+    @GetMapping("/get_infer/{date}")
+    public Response<List<Activity>> get_infer(@RequestHeader Long username, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
+        List<Activity> activities = activityRepository.findByUserIdAndDate(username, date);
         return new Response<>(ReturnCode.SUCCESS, activities);
     }
 
+
     @PostMapping("/update_infer")
-    public Response<String> update_infer(@RequestBody List<Activity> activities) {
-        for (Activity activity : activities) {
-            activityRepository.updateActivityByIdAndUId(activity.getId(), activity.getU_id(), activity.getMode(), activity.getDay(),
-                    activity.getStart_time(), activity.getEnd_time(), activity.getOrigin(),
-                    activity.getDestination(), activity.getActivities(), activity.getCost(),
-                    activity.getLuggage_num(), activity.getLuggage_type(), activity.getLuggage_weight(),
-                    activity.getTravel_car_cost());
+    public Response<String> update_infer(@RequestHeader Long username, @RequestBody Activity activity) {
+        activity.setU_id(username);
+        if (activity.getPurposes() != null) {
+            for (Purpose purpose : activity.getPurposes()) {
+                purpose.setActivity(activity);
+            }
         }
+        activityRepository.save(activity);
+
         return new Response<>(ReturnCode.SUCCESS);
     }
 
-    @PostMapping("/add_purpose")
-    public Response<String> add_purpose(@RequestBody List<Purpose> purposes) {
-            purposeRepository.saveAll(purposes);
-            return new Response<>(ReturnCode.SUCCESS);
+    @PostMapping("/post_infer")
+    public Response<String> post_infer(@RequestHeader Long username, @RequestBody List<Activity> activities) {
+        for (Activity activity : activities) {
+            activity.setU_id(username);
+            if (activity.getPurposes() != null) {
+                for (Purpose purpose : activity.getPurposes()) {
+                    purpose.setActivity(activity);
+                }
+            }
+            activityRepository.save(activity);
+        }
+        return new Response<>(ReturnCode.SUCCESS);
     }
 }
