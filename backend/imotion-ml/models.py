@@ -5,23 +5,19 @@ from fastapi import HTTPException
 from sqlalchemy import Column, String, create_engine, Integer, DateTime, Inspector
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-import time
 from pydantic import BaseModel
 
 Base = declarative_base()
 
 
 class Acc_Item(BaseModel):
-    uid: int
     x: float
     y: float
     z: float
-    time: datetime
 
 
 class Pred_Data(BaseModel):
-    uid: int
-    day: datetime
+    time: datetime
     data: list[Acc_Item]
 
 
@@ -44,24 +40,23 @@ class Activity(Base):
     day = Column(DateTime, nullable=True)
     start_time = Column(DateTime, nullable=True)
     end_time = Column(DateTime, nullable=True)
-    origin = Column(String, nullable=True)
+    origin = Column(String, default="", nullable=True)
     destination = Column(String, nullable=True)
-    activities = Column(String, nullable=True)
     cost = Column(Integer, nullable=True)
     luggage_num = Column(Integer, nullable=True)
-    luggage_type = Column(String, nullable=True)
+    luggage_type = Column(Integer,nullable=True)
     luggage_weight = Column(Integer, nullable=True)
     travel_car_cost = Column(Integer, nullable=True)
 
 
 # 初始化数据库连接:
-engine = create_engine('postgresql://postgres:mysecretpassword@localhost:5432')  # 用户名:密码@localhost:端口/数据库名
-
+engine = create_engine('postgresql://admin:mysecretpassword@postgres-lb:5432/postgresdb')  # 用户名:密码@localhost:端口/数据库名
+#engine = create_engine('postgresql://postgres:mysecretpassword@localhost:5432/postgres')
 # 创建DBSession类型:
 DBSession = sessionmaker(bind=engine)
 
 
-def createTable():
+def create_table():
     # Use Inspector to check for table existence
     inspector = Inspector.from_engine(engine)
     if 'activity' not in inspector.get_table_names():
@@ -69,7 +64,7 @@ def createTable():
         Base.metadata.create_all(bind=engine)
 
 
-def insertData(pred_items: List[Infer_Data]):
+def insert_data(pred_items: List[Infer_Data]):
     session = DBSession()
     try:
         activities = [Activity(**item.dict()) for item in pred_items]

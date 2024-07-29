@@ -15,11 +15,45 @@ spring:
               - Authorization
       routes:
         - id: auth
-          uri: http://localhost:8081
+          uri: http://auth-service:8080
           predicates:
             - Path=/userService/**
+          filters:
+            - StripPrefix=1
+        - id: dataCollection
+          uri: http://datacollection-service:8082
+          predicates:
+            - Path=/dataCollection/**
+          filters:
+            - StripPrefix=1
+        - id: Infer
+          uri: http://infer-service:8083
+          predicates:
+            - Path=/Infer/**
+          filters:
+            - StripPrefix=1
+        - id: Statistics
+          uri: http://stat-service:8084
+          predicates:
+            - Path=/Stat/**
+          filters:
+            - StripPrefix=1
+        - id: Survey
+          uri: http://survey-service:8085
+          predicates:
+            - Path=/Survey/**
           filters:
             - StripPrefix=1
 
 server:
   port: 8765
+  address: 0.0.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

@@ -5,6 +5,7 @@ import com.peter.wang.imotion.datacollection.repository.*;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +37,17 @@ public class DataCollectionController {
         locations.forEach(location -> location.setUid(u_id));
         locationRepository.saveAll(locations);
         return new Response<>(ReturnCode.SUCCESS);
+    }
+
+    @PostMapping("/get_loc")
+    public Response<List<Location>> getLocation(@RequestHeader("username") String username, @Valid @RequestBody Date_Request dateRequest){
+        Long u_id = Long.parseLong(username);
+        if (locationRepository.existsByUid(u_id)) {
+            return new Response<>(ReturnCode.SUCCESS, locationRepository.findByUidAndCreatedTimeBetween(u_id, dateRequest.getStart_date(), dateRequest.getEnd_date()));
+        } else {
+            return new Response<>(ReturnCode.USER_NOT_EXIST);
+        }
+
     }
 
     @PostMapping("/save_acc")

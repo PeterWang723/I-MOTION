@@ -19,6 +19,8 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     Users findByUsername(String username);
 
+    Users findById(long id);
+
     @Modifying
     @Transactional
     @Query("UPDATE Users u SET u.privacyLevel = :privacy WHERE u.id = :id")

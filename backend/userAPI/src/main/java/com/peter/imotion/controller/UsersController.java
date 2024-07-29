@@ -20,11 +20,10 @@ public class UsersController {
     private UsersRepository usersRepository;
 
     @PostMapping("/login")
-    public Response<String> logIn(@RequestBody Users user) {
+    public Response<Users> logIn(@RequestBody Users user) {
         if (usersRepository.existsByUsernameAndPassword(user.getUsername(), user.getPassword())) {
             Users get_user = usersRepository.findByUsername(user.getUsername());
-            long userId = get_user.getId();
-            return new Response<>(ReturnCode.SUCCESS, Long.toString(userId));
+            return new Response<>(ReturnCode.SUCCESS, get_user);
         } else {
             return new Response<>(ReturnCode.INVALID_USER_LOGIN);
         }
@@ -57,5 +56,17 @@ public class UsersController {
             return new Response<>(ReturnCode.SUCCESS);
         }
         return new Response<>(ReturnCode.USER_NOT_EXIST);
+    }
+
+    @PostMapping("/set_household")
+    public Response<String> setHousehold(@RequestHeader long username, @RequestBody String household) {
+        if (usersRepository.existsById(username)) {
+            Users user = usersRepository.findById(username);
+            user.setHouseHold(household);
+            usersRepository.save(user);
+            return new Response<>(ReturnCode.SUCCESS);
+        } else {
+            return new Response<>(ReturnCode.INVALID_USER_LOGIN);
+        }
     }
 }

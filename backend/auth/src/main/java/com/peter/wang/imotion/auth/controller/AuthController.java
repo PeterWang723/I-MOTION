@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @RestController
@@ -34,15 +36,19 @@ public class AuthController {
     UserClient userClient;
 
     @PostMapping("/login")
-    public Response<String> login(@RequestBody LoginEntity user) {
+    public Response<List<String>> login(@RequestBody LoginEntity user) {
 
-        Response<String> response = userClient.getUser(user);
+        Response<Users> response = userClient.getUser(user);
         if(ReturnCode.SUCCESS.getCode() != response.getStatus()){
             log.error(response.getMessage());
-            return response;
+            return new Response<>(ReturnCode.AUTH_FALSE);
         }
-        String token = jwtUtils.createJwt(response.getData());
-        return new Response<>(ReturnCode.SUCCESS, token);
+        String token = jwtUtils.createJwt(String.valueOf(response.getData().getId()));
+        List<String> result = new ArrayList<>();
+        result.add(token);
+        result.add(response.getData().getPrivacyLevel().name());
+        result.add(response.getData().getHouseHold());
+        return new Response<>(ReturnCode.SUCCESS, result);
     }
 
     @PostMapping("/register")
@@ -93,5 +99,4 @@ public class AuthController {
         }
         return new Response<>(ReturnCode.SUCCESS);
     }
-
 }

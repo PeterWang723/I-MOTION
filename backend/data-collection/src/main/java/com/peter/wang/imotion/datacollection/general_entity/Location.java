@@ -11,7 +11,8 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long uid;
-    private Date created_time;
+    @Column(name = "created_time")
+    private Date createdTime;
     private Double latitude;
     private Double longitude;
 }

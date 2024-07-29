@@ -1,9 +1,6 @@
 package com.peter.imotion.infer.controller;
 
-import com.peter.imotion.infer.general_entity.Activity;
-import com.peter.imotion.infer.general_entity.Purpose;
-import com.peter.imotion.infer.general_entity.Response;
-import com.peter.imotion.infer.general_entity.ReturnCode;
+import com.peter.imotion.infer.general_entity.*;
 import com.peter.imotion.infer.repository.ActivityRepository;
 import com.peter.imotion.infer.repository.PurposeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +18,9 @@ public class InferController {
     private ActivityRepository activityRepository;
 
 
-    @GetMapping("/get_infer/{date}")
-    public Response<List<Activity>> get_infer(@RequestHeader Long username, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
-        List<Activity> activities = activityRepository.findByUserIdAndDate(username, date);
+    @PostMapping("/get_infer")
+    public Response<List<Activity>> get_infer(@RequestHeader Long username, @RequestBody Date_Request dateRequest) {
+        List<Activity> activities = activityRepository.findByUserIdAndDate(username, dateRequest.getDate());
         return new Response<>(ReturnCode.SUCCESS, activities);
     }
 

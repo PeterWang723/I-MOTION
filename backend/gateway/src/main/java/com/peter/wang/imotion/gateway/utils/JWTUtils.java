@@ -5,11 +5,15 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
+@Slf4j
 public class JWTUtils {
 
     private static final String SECRET_KEY = "secretKey:123456";
@@ -37,6 +41,7 @@ public class JWTUtils {
             claims = jwt.getClaims();
             return claims;
         } catch (Exception e) {
+            log.error(e.getMessage());
             return null;
         }
     }
