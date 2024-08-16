@@ -26,7 +26,7 @@ public class SurveyController {
     @GetMapping("/get_survey")
     public Response<String> getSurvey(@RequestHeader("username") String username){
         Long u_id = Long.parseLong(username);
-        if (surveyRepository.existsById(u_id)){
+        if (surveyRepository.existsByUID(u_id)){
             return new Response<>(ReturnCode.SUCCESS);
         } else {
             return new Response<>(ReturnCode.USER_NOT_EXIST);

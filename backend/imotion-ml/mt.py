@@ -1,13 +1,9 @@
 import torch
-import coremltools as ct
 
 model = torch.jit.load("mode_prediction.pt", map_location="cpu")
 model.eval()
-dummy_input = torch.rand(1, 600)
+dummy_input = torch.rand(300, 1, 600)
 
-mlmodel = ct.converters.convert(
-    model,
-    inputs=[ct.TensorType(shape=dummy_input.shape)]
-)
+output = model(dummy_input)
 
-mlmodel.save("model.mlpackage")
+print(output)

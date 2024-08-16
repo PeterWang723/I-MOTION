@@ -17,6 +17,7 @@ class Acc_Item(BaseModel):
 
 
 class Pred_Data(BaseModel):
+    day: datetime
     time: datetime
     data: list[Acc_Item]
 
