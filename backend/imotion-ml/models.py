@@ -50,10 +50,10 @@ class Activity(Base):
     travel_car_cost = Column(Integer, nullable=True)
 
 
-# 初始化数据库连接:
+# Initialize Database connection:
 engine = create_engine('postgresql://admin:mysecretpassword@postgres-lb:5432/postgresdb')  # 用户名:密码@localhost:端口/数据库名
 #engine = create_engine('postgresql://postgres:mysecretpassword@localhost:5432/postgres')
-# 创建DBSession类型:
+# create DBSession:
 DBSession = sessionmaker(bind=engine)
 
 

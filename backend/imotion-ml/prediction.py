@@ -37,7 +37,7 @@ def combine_continuous_modes(u_id: int, all_acc_date: List[Tuple[datetime, datet
     day = all_acc_date[0][0]
 
     # Step 1: Encode the initial transport mode sequence and time sequence
-    sequences = [(modes[i], all_acc_date[i][0], all_acc_date[i][1], 1, 0) for i in range(len(modes))]
+    sequences = [(modes[i], all_acc_date[i][1], all_acc_date[i][1], 1, 0) for i in range(len(modes))]
 
     def merge_sequences(sequences):
         merged_sequences = []

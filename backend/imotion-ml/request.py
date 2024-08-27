@@ -9,13 +9,12 @@ import json
 from models import Acc_Item, Pred_Data
 
 # URL of the service
-url = "http://34.142.75.72:8085/predict_acc/"
+url = "https://www.i4motion.com/Survey/predict_acc/"
 
 # Headers including a custom 'username'
 headers = {
-    "username": "1",  # Replace 'your_username' with the actual username
     "Content-Type": "application/json",
-    "Authorization": f"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJleHAiOjEwMDAwMDE3MjIyNjM0NDZ9.9GrAma65zo7oROnsZ6yBa0SALo6rcZWA0jV0rwsc0-E"
+    "Authorization": f"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjEiLCJleHAiOjEwMDAwMDE3MjQ2NjY5OTh9.Z54VO93QA-WGYEuRbAZNjraF2quOXMyAoJ4zNJUPn7k"
 }
 
 
@@ -43,7 +42,7 @@ def generate_pred_data(num_entries: int, items_per_entry: int) -> list[dict[str,
     return pred_data_list
 
 
-data = generate_pred_data(100, 100)
+data = generate_pred_data(3600, 100)
 print("size of data is:", sys.getsizeof(data) / (1024 * 1024), "MB")
 
 response = requests.post(url, headers=headers, json=data)

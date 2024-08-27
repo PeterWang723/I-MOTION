@@ -35,4 +35,7 @@ build/
 ### DS ###
 .DS_Store
 
+/frontend/
+
+
 **.txt

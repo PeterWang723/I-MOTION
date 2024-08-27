@@ -125,4 +125,4 @@ def combine_continuous_modes(u_id: int, all_acc_date: List[Tuple[datetime, datet
 
 result = combine_continuous_modes(1, all_acc_date, modes)
 
-print("combined result counts = ", len(result))
+print("combined result counts = ", result)
