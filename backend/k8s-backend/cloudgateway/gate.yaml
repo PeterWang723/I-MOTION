@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gate
+  template:
+    metadata:
+      labels:
+        app: gate
+    spec:
+      containers:
+      - name: gate
+        image: peter962/gate:0.0.5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8765
+        resources:
+          requests:
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8765
+          initialDelaySeconds: 90
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8765
+          initialDelaySeconds: 100
+          periodSeconds: 15
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3

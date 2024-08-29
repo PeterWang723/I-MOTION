@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dc
+  template:
+    metadata:
+      labels:
+        app: dc
+    spec:
+      containers:
+      - name: dc
+        image: peter962/dc:0.0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+        resources:
+          requests:
+            cpu: "1"
+            memory: "5"

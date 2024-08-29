@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survey
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: survey
+  template:
+    metadata:
+      labels:
+        app: survey
+    spec:
+      containers:
+      - name: survey
+        image: peter962/survey:0.0.4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8084
+        resources:
+          requests:
+            cpu: "500m"

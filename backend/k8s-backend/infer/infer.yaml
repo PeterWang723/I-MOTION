@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: infer
+  template:
+    metadata:
+      labels:
+        app: infer
+    spec:
+      containers:
+      - name: infer
+        image: peter962/infer:0.0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8083
+        resources:
+          requests:
+            cpu: "250m"

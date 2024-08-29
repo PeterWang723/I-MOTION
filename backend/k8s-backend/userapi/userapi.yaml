@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userapi
+  template:
+    metadata:
+      labels:
+        app: userapi
+    spec:
+      containers:
+      - name: userapi
+        image: peter962/userapi:0.0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            cpu: "250m"
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgres-lb:5432/postgresdb
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-config
+                key: POSTGRES_USER
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD

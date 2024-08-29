@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml
+  template:
+    metadata:
+      labels:
+        app: ml
+    spec:
+      serviceAccountName: ml-user
+      containers:
+      - name: ml
+        image: peter962/ml:0.0.20
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8084
+        resources:
+          requests:
+            cpu: "1"
+            memory: "5"
