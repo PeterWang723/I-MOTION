@@ -72,5 +72,15 @@ day.
 <a href="https://dbdocs.io/w906323199/I-MOTION-database?view=relationships">I-MOTION Database Design </a>
 
 ## Structure of Repo
-
+```bash
+I-MOTION/
+│
+├── assets/                   # Contains static assets like images
+├── backend/                  # Backend services and data processing scripts
+├── background_report/         # Research documents and reports
+├── frontend/ios/imotion/      # Source code for the iOS application
+├── imotionTests/              # Unit tests for the iOS app
+├── .gitignore                 # Specifies files to ignore in Git version control
+└── README.md                  # Main documentation for the project
+```
 
