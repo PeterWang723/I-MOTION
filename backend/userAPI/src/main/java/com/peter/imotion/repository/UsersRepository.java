@@ -15,6 +15,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
     void deleteByUsername(String username);
 
+    @Query("SELECT CASE WHEN COUNT(u) > 0 THEN TRUE ELSE FALSE END FROM Users u WHERE u.username = :username")
     boolean existsByUsername(String username);
 
     Users findByUsername(String username);
